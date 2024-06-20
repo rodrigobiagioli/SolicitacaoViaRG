@@ -30,7 +30,7 @@ builder.Services.AddSwaggerGen(c =>
         In = ParameterLocation.Header,
         Name = "ApiKey",
         Type = SecuritySchemeType.ApiKey,
-        Description = "API Key needed to access the endpoints. ApiKey: MySuperSecretApiKey12345!"
+        Description = "API Key needed to access the endpoints."
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement

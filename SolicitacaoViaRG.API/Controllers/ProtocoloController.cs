@@ -29,13 +29,7 @@ namespace SolicitacaoViaRG.API.Controllers
         private readonly ILogger<ProtocoloController> _logger;
         private readonly ProtocoloBLL _protocoloBLL;
 
-        /// <summary>
-        /// Construtor do ProtocoloController.
-        /// </summary>
-        /// <param name="protocoloRepository">Repositório de protocolos.</param>
-        /// <param name="protocoloBLL">Camada de negócios para protocolos.</param>
-        /// <param name="logger">Logger.</param>
-        /// <param name="configuration">Configurações da aplicação.</param>
+    
         public ProtocoloController(IProtocoloRepository protocoloRepository, ProtocoloBLL protocoloBLL, ILogger<ProtocoloController> logger, IConfiguration configuration)
         {
             _protocoloRepository = protocoloRepository;
