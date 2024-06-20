@@ -88,7 +88,7 @@ namespace SolicitacaoViaRG.Services
                         _logger.LogInformation("Nova mensagem recebida na fila MQ");
                         await _protocoloBLL.SalvarProtocoloAsync(protocoloDto);
                         _channel.BasicAck(ea.DeliveryTag, false);
-                        _logger.LogInformation("Protocolo gravado no MongoDB: {@ProtocoloDto}", message);
+                        _logger.LogInformation("Protocolo gravado no MongoDB: {@ProtocoloDto}", protocoloDto.NumeroProtocolo);
                     }
                 }
                 catch (Exception ex)

@@ -76,6 +76,13 @@ namespace SolicitacaoViaRG.BLL
             return protocolo != null ? MapToDto(protocolo) : null;
         }
 
+        public async Task<IEnumerable<ProtocoloDto>> ObterTodosAsync()
+        {
+            _logger.LogInformation("Buscando todos os protocolos.");
+            var protocolos = await _protocoloRepository.GetAllAsync();
+            return protocolos.Select(MapToDto).ToList();
+        }
+
         private void ValidarCamposObrigatorios(ProtocoloDto protocoloDto)
         {
             if (string.IsNullOrWhiteSpace(protocoloDto.NumeroProtocolo))

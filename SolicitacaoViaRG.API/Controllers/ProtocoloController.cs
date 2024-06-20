@@ -29,7 +29,6 @@ namespace SolicitacaoViaRG.API.Controllers
         private readonly ILogger<ProtocoloController> _logger;
         private readonly ProtocoloBLL _protocoloBLL;
 
-    
         public ProtocoloController(IProtocoloRepository protocoloRepository, ProtocoloBLL protocoloBLL, ILogger<ProtocoloController> logger, IConfiguration configuration)
         {
             _protocoloRepository = protocoloRepository;
@@ -80,6 +79,28 @@ namespace SolicitacaoViaRG.API.Controllers
 
             var protocolos = await _protocoloBLL.BuscarProtocolosAsync(numeroProtocolo, cpf, rg);
             _logger.LogInformation("Busca de protocolos concluída com sucesso.");
+
+            return Ok(protocolos);
+        }
+
+        /// <summary>
+        /// Retorna todos os protocolos.
+        /// </summary>
+        /// <returns>Retorna uma lista de todos os protocolos.</returns>
+        /// <remarks>
+        /// Exemplos de solicitações:
+        ///
+        ///     GET /protocolo/todos
+        ///
+        /// </remarks>
+        [HttpGet("todos")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllProtocolos()
+        {
+            _logger.LogInformation("Buscando todos os protocolos.");
+
+            var protocolos = await _protocoloBLL.ObterTodosAsync();
+            _logger.LogInformation("Busca de todos os protocolos concluída com sucesso.");
 
             return Ok(protocolos);
         }
