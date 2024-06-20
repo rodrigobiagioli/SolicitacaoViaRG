@@ -25,6 +25,7 @@ Executando o Projeto Localmente
 -------------------------------
 
 ------------API -------------------
+
 -Navegue até o diretório da API:
 cd SolicitacaoViaRG.API
 
@@ -39,6 +40,7 @@ A API esta protegida por uma APIKEY que deve ser informada no cabeçalho das cha
 e para publicação no docker-compose esta definida na variavel de ambiente AuthSettings__ApiKey.
 
 ------------WORKER-----------
+
 Navegue até o diretório do Worker:
 cd SolicitacaoViaRG.Worker
 
@@ -62,6 +64,7 @@ dotnet run
 ------------------------------------------
 Executando com Docker
 ------------------------------------------
+
 Certifique-se de que o Docker e o Docker Compose estão instalados em sua máquina.
 
 - Construa e inicie os contêineres:
@@ -75,6 +78,7 @@ A API estará disponível em http://localhost:5230/swagger.
 ------------------------------------------------------------
 Estrutura do Repositório
 ------------------------------------------------------------
+
 SolicitacaoViaRG.API: Contém a API para consulta de protocolos.
 SolicitacaoViaRG.Worker: Contém o serviço Worker que processa mensagens da fila RabbitMQ e armazena os dados no MongoDB.
 SolicitacaoViaRG.Publisher: Contém o serviço Publisher que envia protocolos para a fila RabbitMQ.
@@ -87,6 +91,7 @@ protocolos.json: Arquivo contendo protocolos para serem enviados pelo Publisher.
 ------------------------------------------------------------
 Informações Importantes
 ------------------------------------------------------------
+
 RabbitMQ Management: A interface de gerenciamento do RabbitMQ pode ser acessada em http://localhost:15672 com as credenciais root / 123.
 MongoDB: O MongoDB é configurado para rodar na porta 27017 com as credenciais root / 123.
 
