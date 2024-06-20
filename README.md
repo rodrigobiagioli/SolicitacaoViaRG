@@ -109,6 +109,14 @@ SolicitacaoViaRG.Worker: Contém o serviço Worker que processa mensagens da fil
 
 SolicitacaoViaRG.Publisher: Contém o serviço Publisher que envia protocolos para a fila RabbitMQ.
 
+SolicitacaoViaRG.BLL: Contém classes da camada de Regras de Negocio.
+
+SolicitacaoViaRG.Data: Contém classes responsaveis por acesso aos repositorios.
+
+SolicitacaoViaRG.Helper: Contém classes de funções auxiliares.
+
+SolicitacaoViaRG.Tests: Contém testes unitarios.
+
 docker-compose.yml: Arquivo Docker Compose para orquestrar os serviços.
 
 Dockerfile.api: Dockerfile para construir a imagem da API.
