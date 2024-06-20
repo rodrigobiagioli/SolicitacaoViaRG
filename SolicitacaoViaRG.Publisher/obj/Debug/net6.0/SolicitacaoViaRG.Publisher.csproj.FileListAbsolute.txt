@@ -64,6 +64,7 @@
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/SolicitacaoViaRG.Publisher.AssemblyInfoInputs.cache
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/SolicitacaoViaRG.Publisher.AssemblyInfo.cs
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/SolicitacaoViaRG.Publisher.csproj.CoreCompileInputs.cache
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/SolicitacaoViaRG.Publisher.sourcelink.json
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/Solicita.41BAC3C9.Up2Date
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/SolicitacaoViaRG.Publisher.dll
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Publisher/obj/Debug/net6.0/refint/SolicitacaoViaRG.Publisher.dll

@@ -9,9 +9,15 @@ using SolicitacaoViaRG.Data.Repository.Interface;
 using SolicitacaoViaRG.Helper;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Configuration;
+using System.Threading.Tasks;
 
 namespace SolicitacaoViaRG.API.Controllers
 {
+    /// <summary>
+    /// Controlador para gerenciamento de protocolos.
+    /// </summary>
     [ApiController]
     [Route("[controller]")]
     [ApiKeyAuth]
@@ -23,6 +29,13 @@ namespace SolicitacaoViaRG.API.Controllers
         private readonly ILogger<ProtocoloController> _logger;
         private readonly ProtocoloBLL _protocoloBLL;
 
+        /// <summary>
+        /// Construtor do ProtocoloController.
+        /// </summary>
+        /// <param name="protocoloRepository">Repositório de protocolos.</param>
+        /// <param name="protocoloBLL">Camada de negócios para protocolos.</param>
+        /// <param name="logger">Logger.</param>
+        /// <param name="configuration">Configurações da aplicação.</param>
         public ProtocoloController(IProtocoloRepository protocoloRepository, ProtocoloBLL protocoloBLL, ILogger<ProtocoloController> logger, IConfiguration configuration)
         {
             _protocoloRepository = protocoloRepository;
@@ -43,10 +56,37 @@ namespace SolicitacaoViaRG.API.Controllers
             }
         }
 
-                [HttpGet("buscar")]
+        /// <summary>
+        /// Busca protocolos com base nos parâmetros fornecidos.
+        /// </summary>
+        /// <param name="numeroProtocolo">Número do protocolo (opcional).</param>
+        /// <param name="cpf">CPF do solicitante (opcional).</param>
+        /// <param name="rg">RG do solicitante (opcional).</param>
+        /// <returns>Retorna uma lista de protocolos que correspondem aos critérios de busca.</returns>
+        /// <remarks>
+        /// Exemplos de solicitações:
+        ///
+        ///     GET /protocolo/buscar?numeroProtocolo=12345
+        ///     GET /protocolo/buscar?cpf=12345678901
+        ///     GET /protocolo/buscar?rg=1234567
+        ///
+        /// </remarks>
+        [HttpGet("buscar")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> BuscarProtocolos([FromQuery] string? numeroProtocolo, [FromQuery] string? cpf, [FromQuery] string? rg)
         {
+            _logger.LogInformation("Iniciando busca de protocolos.");
+            
+            if (string.IsNullOrEmpty(numeroProtocolo) && string.IsNullOrEmpty(cpf) && string.IsNullOrEmpty(rg))
+            {
+                _logger.LogWarning("Nenhum parâmetro de busca fornecido.");
+                return BadRequest("Pelo menos um parâmetro de busca deve ser fornecido.");
+            }
+
             var protocolos = await _protocoloBLL.BuscarProtocolosAsync(numeroProtocolo, cpf, rg);
+            _logger.LogInformation("Busca de protocolos concluída com sucesso.");
+
             return Ok(protocolos);
         }
     }

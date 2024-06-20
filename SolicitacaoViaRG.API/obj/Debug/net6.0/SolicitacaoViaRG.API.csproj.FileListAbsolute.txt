@@ -45,6 +45,7 @@
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/SolicitacaoViaRG.API.csproj.CoreCompileInputs.cache
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/SolicitacaoViaRG.API.MvcApplicationPartsAssemblyInfo.cs
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/SolicitacaoViaRG.API.MvcApplicationPartsAssemblyInfo.cache
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/SolicitacaoViaRG.API.sourcelink.json
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/staticwebassets.build.json
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/staticwebassets.development.json
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.API/obj/Debug/net6.0/staticwebassets/msbuild.SolicitacaoViaRG.API.Microsoft.AspNetCore.StaticWebAssets.props

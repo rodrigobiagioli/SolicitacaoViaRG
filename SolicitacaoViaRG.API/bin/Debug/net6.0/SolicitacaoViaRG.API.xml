@@ -4,5 +4,36 @@
         <name>SolicitacaoViaRG.API</name>
     </assembly>
     <members>
+        <member name="T:SolicitacaoViaRG.API.Controllers.ProtocoloController">
+            <summary>
+            Controlador para gerenciamento de protocolos.
+            </summary>
+        </member>
+        <member name="M:SolicitacaoViaRG.API.Controllers.ProtocoloController.#ctor(SolicitacaoViaRG.Data.Repository.Interface.IProtocoloRepository,SolicitacaoViaRG.BLL.ProtocoloBLL,Microsoft.Extensions.Logging.ILogger{SolicitacaoViaRG.API.Controllers.ProtocoloController},Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Construtor do ProtocoloController.
+            </summary>
+            <param name="protocoloRepository">Repositório de protocolos.</param>
+            <param name="protocoloBLL">Camada de negócios para protocolos.</param>
+            <param name="logger">Logger.</param>
+            <param name="configuration">Configurações da aplicação.</param>
+        </member>
+        <member name="M:SolicitacaoViaRG.API.Controllers.ProtocoloController.BuscarProtocolos(System.String,System.String,System.String)">
+             <summary>
+             Busca protocolos com base nos parâmetros fornecidos.
+             </summary>
+             <param name="numeroProtocolo">Número do protocolo (opcional).</param>
+             <param name="cpf">CPF do solicitante (opcional).</param>
+             <param name="rg">RG do solicitante (opcional).</param>
+             <returns>Retorna uma lista de protocolos que correspondem aos critérios de busca.</returns>
+             <remarks>
+             Exemplos de solicitações:
+            
+                 GET /protocolo/buscar?numeroProtocolo=12345
+                 GET /protocolo/buscar?cpf=12345678901
+                 GET /protocolo/buscar?rg=1234567
+            
+             </remarks>
+        </member>
     </members>
 </doc>

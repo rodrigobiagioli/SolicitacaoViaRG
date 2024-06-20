@@ -93,6 +93,7 @@ services:
       RabbitMq__HostName: "rabbitmq"
       RabbitMq__UserName: "root"
       RabbitMq__Password: "123"
+      AuthSettings__ApiKey: "tQzSdj8fFJ+AlI8u7Rqz0PylzViQ6v/qnHCfu1Pjtk4lIoJ/E5jC4H5GZ2B4Mf1Q6aVnLhSzbbQ5Kbq8LxV8ZQ=="
     depends_on:
       - mongodb
       - rabbitmq

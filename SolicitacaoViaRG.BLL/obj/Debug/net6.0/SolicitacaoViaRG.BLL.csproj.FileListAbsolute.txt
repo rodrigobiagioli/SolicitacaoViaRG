@@ -10,6 +10,7 @@
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/SolicitacaoViaRG.BLL.AssemblyInfoInputs.cache
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/SolicitacaoViaRG.BLL.AssemblyInfo.cs
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/SolicitacaoViaRG.BLL.csproj.CoreCompileInputs.cache
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/SolicitacaoViaRG.BLL.sourcelink.json
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/Solicita.9F31AB13.Up2Date
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/SolicitacaoViaRG.BLL.dll
 /Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.BLL/obj/Debug/net6.0/refint/SolicitacaoViaRG.BLL.dll
