@@ -1,0 +1,12 @@
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/bin/Debug/net6.0/SolicitacaoViaRG.Helper.deps.json
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/bin/Debug/net6.0/SolicitacaoViaRG.Helper.dll
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/bin/Debug/net6.0/SolicitacaoViaRG.Helper.pdb
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.csproj.AssemblyReference.cache
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.AssemblyInfoInputs.cache
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.AssemblyInfo.cs
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.csproj.CoreCompileInputs.cache
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.dll
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/refint/SolicitacaoViaRG.Helper.dll
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/SolicitacaoViaRG.Helper.pdb
+/Users/rodrigobiagioli/Development/SolicitacaoViaRG/SolicitacaoViaRG.Helper/obj/Debug/net6.0/ref/SolicitacaoViaRG.Helper.dll

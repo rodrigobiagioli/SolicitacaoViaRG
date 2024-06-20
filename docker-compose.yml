@@ -1,0 +1,104 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:5.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - backend
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: root
+      RABBITMQ_DEFAULT_PASS: 123
+      RABBITMQ_DEFAULT_VHOST: "/"
+    healthcheck:
+      test: ["CMD-SHELL", "rabbitmqctl status"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    networks:
+      - backend
+
+  solicitacaoviarg-worker:
+    container_name: solicitacaoviarg_worker
+    build:
+      context: .
+      dockerfile: ./dockerfile.worker
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__MongoDb: "mongodb://root:123@mongodb:27017"
+      MongoDbDatabaseName: "DBDadosFilaMq"
+      ImageDirectory: "/app/images"
+      RabbitMq__HostName: "rabbitmq"
+      RabbitMq__UserName: "root"
+      RabbitMq__Password: "123"
+    volumes:
+      - ./images:/app/images
+    networks:
+      - backend
+
+  solicitacaoviarg-publisher:
+    container_name: solicitacaoviarg_publisher
+    build:
+      context: .
+      dockerfile: ./dockerfile.publisher
+    depends_on:
+      - solicitacaoviarg-worker
+    environment:
+      ConnectionStrings__MongoDb: "mongodb://root:123@mongodb:27017"
+      MongoDbDatabaseName: "DBDadosFilaMq"
+      ImageDirectory: "/app/images"
+      RabbitMq__HostName: "rabbitmq"
+      RabbitMq__UserName: "root"
+      RabbitMq__Password: "123"
+    volumes:
+      - ./images:/app/images
+      - ./SolicitacaoViaRG.Publisher/protocolos.json:/app/protocolos.json 
+    networks:
+      - backend
+
+  solicitacaoviarg-api:
+    container_name: solicitacaoviarg_api
+    build:
+      context: .
+      dockerfile: dockerfile.api
+    ports:
+      - "5230:80" 
+    environment:
+      ConnectionStrings__MongoDb: "mongodb://root:123@mongodb:27017"
+      MongoDbDatabaseName: "DBDadosFilaMq"
+      RabbitMq__HostName: "rabbitmq"
+      RabbitMq__UserName: "root"
+      RabbitMq__Password: "123"
+    depends_on:
+      - mongodb
+      - rabbitmq
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge

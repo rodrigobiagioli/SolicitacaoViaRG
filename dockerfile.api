@@ -1,0 +1,28 @@
+# Dockerfile.api
+
+# Use a imagem oficial do .NET SDK para compilar o projeto
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+
+# Copia os arquivos de projeto e restaura as dependências
+COPY ["SolicitacaoViaRG.API/SolicitacaoViaRG.API.csproj", "SolicitacaoViaRG.API/"]
+COPY ["SolicitacaoViaRG.BLL/SolicitacaoViaRG.BLL.csproj", "SolicitacaoViaRG.BLL/"]
+COPY ["SolicitacaoViaRG.Data/SolicitacaoViaRG.Data.csproj", "SolicitacaoViaRG.Data/"]
+COPY ["SolicitacaoViaRG.Helper/SolicitacaoViaRG.Helper.csproj", "SolicitacaoViaRG.Helper/"]
+
+RUN dotnet restore "SolicitacaoViaRG.API/SolicitacaoViaRG.API.csproj"
+
+# Copia todo o código e compila o projeto
+COPY . .
+WORKDIR "/src/SolicitacaoViaRG.API"
+RUN dotnet build "SolicitacaoViaRG.API.csproj" -c Release -o /app/build
+
+# Publica a aplicação
+FROM build AS publish
+RUN dotnet publish "SolicitacaoViaRG.API.csproj" -c Release -o /app/publish
+
+# Configura a imagem final
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "SolicitacaoViaRG.API.dll"]

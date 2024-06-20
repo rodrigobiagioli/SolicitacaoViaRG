@@ -1,0 +1,30 @@
+# Dockerfile.publisher
+
+# Use a imagem oficial do .NET SDK para compilar o projeto
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+WORKDIR /src
+
+# Copia os arquivos de projeto e restaura as dependências
+COPY ["SolicitacaoViaRG.Publisher/SolicitacaoViaRG.Publisher.csproj", "SolicitacaoViaRG.Publisher/"]
+COPY ["SolicitacaoViaRG.BLL/SolicitacaoViaRG.BLL.csproj", "SolicitacaoViaRG.BLL/"]
+COPY ["SolicitacaoViaRG.Data/SolicitacaoViaRG.Data.csproj", "SolicitacaoViaRG.Data/"]
+COPY ["SolicitacaoViaRG.Helper/SolicitacaoViaRG.Helper.csproj", "SolicitacaoViaRG.Helper/"]
+
+RUN dotnet restore "SolicitacaoViaRG.Publisher/SolicitacaoViaRG.Publisher.csproj"
+
+# Copia todo o código e compila o projeto
+COPY . .
+WORKDIR "/src/SolicitacaoViaRG.Publisher"
+RUN dotnet build "SolicitacaoViaRG.Publisher.csproj" -c Release -o /app/build
+
+# Publica a aplicação
+FROM build AS publish
+RUN dotnet publish "SolicitacaoViaRG.Publisher.csproj" -c Release -o /app/publish
+
+# Configura a imagem final
+FROM mcr.microsoft.com/dotnet/runtime:6.0 AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+# Copia o arquivo protocolos.json para o contêiner
+COPY ["SolicitacaoViaRG.Publisher/protocolos.json", "/app/protocolos.json"]
+ENTRYPOINT ["dotnet", "SolicitacaoViaRG.Publisher.dll"]
