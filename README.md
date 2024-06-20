@@ -22,11 +22,66 @@ git clone https://github.com/your-username/SolicitacaoViaRG.git
 
 cd SolicitacaoViaRG
 
+------------------------------------------
+Executando com Docker
+------------------------------------------
+
+Certifique-se de que o Docker e o Docker Compose estão instalados em sua máquina.
+
+- Construa e inicie os contêineres:
+  
+docker-compose up --build
+
+- Verifique os logs dos contêineres para garantir que todos os serviços estão funcionando corretamente:
+  
+docker-compose logs
+
+A API estará disponível em http://localhost:5230/swagger.
+
 -------------------------------
 Executando o Projeto Localmente
 -------------------------------
 
+
+------------WORKER-----------
+
+Requisito: ter executado o docker-compose para criação dos containers para o RabbitMQ e MongoDB
+
+- Navegue até o diretório do Worker:
+
+cd SolicitacaoViaRG.Worker
+
+- Restaure as dependências:
+  
+dotnet restore
+
+- Compile e execute o Worker:
+  
+dotnet run
+
+------------PUBLISHER ---------------------------
+
+Requisitos: 
+-- ter executado o docker-compose para criação dos containers para o RabbitMQ e MongoDB;
+-- projeto Worker estar em execução;
+
+- Navegue até o diretório do Publisher:
+  
+cd SolicitacaoViaRG.Publisher
+
+- Restaure as dependências:
+  
+dotnet restore
+
+- Compile e execute o Publisher:
+  
+dotnet run
+
 ------------API -------------------
+
+Requisito: 
+-- ter executado o docker-compose para criação dos containers para o RabbitMQ e MongoDB;
+-- projeto Worker estar em execução;
 
 -Navegue até o diretório da API:
 
@@ -43,50 +98,6 @@ dotnet run
 A API estará disponível em http://localhost:5000/swagger.
 A API esta protegida por uma APIKEY que deve ser informada no cabeçalho das chamadas dos EndPoints, o Token esta definido no appsettings.json na variavel "ApiKey" 
 e para publicação no docker-compose esta definida na variavel de ambiente AuthSettings__ApiKey.
-
-------------WORKER-----------
-
-- Navegue até o diretório do Worker:
-
-cd SolicitacaoViaRG.Worker
-
-- Restaure as dependências:
-  
-dotnet restore
-
-- Compile e execute o Worker:
-  
-dotnet run
-
-------------PUBLISHER ---------------------------
-
-- Navegue até o diretório do Publisher:
-  
-cd SolicitacaoViaRG.Publisher
-
-- Restaure as dependências:
-  
-dotnet restore
-
-- Compile e execute o Publisher:
-  
-dotnet run
-
-------------------------------------------
-Executando com Docker
-------------------------------------------
-
-Certifique-se de que o Docker e o Docker Compose estão instalados em sua máquina.
-
-- Construa e inicie os contêineres:
-  
-docker-compose up --build
-
-- Verifique os logs dos contêineres para garantir que todos os serviços estão funcionando corretamente:
-  
-docker-compose logs
-
-A API estará disponível em http://localhost:5230/swagger.
 
 ------------------------------------------------------------
 Estrutura do Repositório
@@ -134,4 +145,6 @@ docker-compose ps
 Verifique os logs do contêiner da API:
 
 docker-compose logs solicitacaoviarg_api
+
+
 
